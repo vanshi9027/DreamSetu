@@ -4,7 +4,7 @@ import Footer from "../../components/layout/Footer";
 function LandingPage() {
   return (
     <main>
-      <Navbar />
+      <Navbar  />
       <Footer />
     </main>
   );
