@@ -1,39 +1,56 @@
-function Navbar(){
-    return (
-        <header className="border-b bg-white border-gray-200">
+import logo from "../../assets/dreamsetu-logo.png";
 
-    <nav className="flex-col flex  gap-5 items-center h-24  px-8  mx-auto max-w-7xl">
+const navItems = [
+  "Features",
+  "How It Works",
+  "About",
+  "Contact",
+];
 
-        <h1 className="font-extrabold text-4xl text-blue-600 cursor-pointer">DreamSetu</h1>
+function Navbar() {
+  return (
+    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
+      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
+        {/* Logo */}
+        <div className="flex items-center gap-3 cursor-pointer">
+          <img
+            src={logo}
+            alt="DreamSetu Logo"
+            className="h-12 w-12 object-contain"
+          />
 
-        <ul className="flex gap-10 list-none">
-
-        
-     
-            <li className="cursor-pointer text-gray-600 hover:text-blue-600 transition-colors">Problem </li>   
-                
-            <li className="cursor-pointer text-gray-600 hover:text-blue-600 transition-colors">Solution</li>
-
-            <li className="cursor-pointer text-gray-600 hover:text-blue-600 transition-colors">Features</li>
-
-            <li className="cursor-pointer text-gray-600 hover:text-blue-600 transition-colors">How It Works</li>
-
-            <li className="cursor-pointer text-gray-600 hover:text-blue-600 transition-colors">Roadmap</li>
-
-        </ul>
-
-        <div className="flex flex-col items-cnter gap-4">
-
-            <button className="font-medium text-gray-700 hover:text-blue-600">Login</button>
-
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-xl hover:scale-105 transition-colors">Get Started</button>
-
+          <h1 className="text-2xl font-extrabold tracking-tight text-blue-600">
+            DreamSetu
+          </h1>
         </div>
 
-    </nav>
+        {/* Navigation */}
+        <ul className="hidden items-center gap-10 md:flex">
+          {navItems.map((item) => (
+            <li
+              key={item}
+              className="cursor-pointer text-[15px] font-medium text-gray-700 transition-colors duration-200 hover:text-blue-600"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
 
-</header>
- 
-    );
+        {/* Buttons */}
+        <div className="flex items-center gap-5">
+          <button className="hidden text-sm font-medium text-gray-700 transition-colors hover:text-blue-600 md:block">
+            Login
+          </button>
+
+          <button className="rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:scale-105 hover:bg-blue-700 hover:shadow-lg">
+            Get Started
+          </button>
+        </div>
+      </nav>
+    </header>
+  );
 }
+
 export default Navbar;
+
+
