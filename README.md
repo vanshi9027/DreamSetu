@@ -341,7 +341,7 @@ npm run dev
 Create a `.env` file inside the backend folder.
 
 ```env
-PORT=5000
+PORT= 8080
 
 MONGO_URI=your_mongodb_connection
 
@@ -371,17 +371,9 @@ Contributions are welcome!
 
 ---
 
-# 🏆 Build for Good 2026
 
-DreamSetu is being built as part of the **Build for Good 2026 Hackathon**, aiming to transform collaborative education through AI-powered mentorship and project-based learning.
 
----
 
-# 📜 License
-
-This project is licensed under the **MIT License**.
-
----
 
 # ⭐ Support
 
