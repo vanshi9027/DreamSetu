@@ -27,7 +27,7 @@ const jwt = require("jsonwebtoken");
 
     // 2. check if user already exits
     // using find method to access user in db 
-    const existinguser = await User.findone({
+    const existinguser = await userModel.findOne({
         $or : [{email} ,{password}]  // check based on email and password exit condtion
 
     });
@@ -81,18 +81,20 @@ const jwt = require("jsonwebtoken");
     const {email , password} = req.body;
 
     const user = await userModel.findOne({email});
-
+// check user exits 
     if(!user){
         return res.status(400).json({
             message : "Invalid email or password"
         })
     }
 
+    // password validate
+
     const passwordvalid = await bcrypt.compare(password , user.password);
 
     if(!passwordvalid){
          return res.status(400).json({
-            message : "Invalid email or password"
+            message : "Invalid  password"
         })
 
     }
