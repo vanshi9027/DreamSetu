@@ -39,10 +39,10 @@ Status: ✅ Completed
 
 ## Phase 2 — UI/UX Design
 
-- [ ] Design System
-- [ ] Color Palette
-- [ ] Typography
-- [ ] Landing Page Design
+- [✅ ] Design System
+- [ ✅] Color Palette
+- [ ✅] Typography
+- [✅ ] Landing Page Design
 - [ ] Authentication Screens
 - [ ] Dashboard Design
 - [ ] Setu Pod Workspace
