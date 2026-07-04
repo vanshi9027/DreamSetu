@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const cookieParser = require("cookie-parser");
 const {registerUser} = require("../controllers/userController");
 const {loginUser} = require("../controllers/userController");
 const {logoutUser} = require("../controllers/userController");
 const authUser = require("../middleware/authMiddleware");
+const {getMe} = require("../controllers/userController");
+
+
 
 
 

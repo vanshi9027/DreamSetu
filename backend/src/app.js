@@ -1,10 +1,12 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
 
 const app = express();  // create an express Application object
 
 const port = 8080
 
 app.use(express.json());
+app.use(cookieParser()); 
 
 // require all the route here/
 
