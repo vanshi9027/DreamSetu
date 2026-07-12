@@ -416,3 +416,446 @@ Notifications
 Achievements
 
 This keeps the MVP focused and achievable.
+
+
+
+
+# DreamSetu Database Schema (Buildathon MVP)
+
+## Purpose
+
+DreamSetu is an **AI Career Accelerator** that helps students become job-ready through:
+
+- 🤖 AI Skill Assessment
+- 📊 Skill Gap Analysis
+- 🗺 Personalized Learning Roadmap
+- 👥 AI Setu Pods (Collaborative Learning)
+- 📄 AI Resume Analysis
+- 🎤 AI Mock Interviews
+- 💼 Internship Recommendations
+- 📈 Progress Tracking
+
+Unlike traditional career platforms, DreamSetu combines **AI-powered career guidance** with **collaborative project-based learning**.
+
+---
+
+# Database Technology
+
+For the MVP, DreamSetu uses:
+
+- **MongoDB**
+- **Mongoose**
+- **Express.js**
+
+The database design is modular so it can later be migrated to **PostgreSQL (Supabase)** without major architectural changes.
+
+---
+
+# MVP Collections
+
+## Phase 1 (Must Have)
+
+1. Users
+2. Skill Assessments
+3. Learning Roadmaps
+4. Setu Pods
+5. Pod Members
+6. Projects
+7. Tasks
+8. Progress Reports
+
+---
+
+## Phase 2
+
+9. Resume Analysis
+10. Mock Interviews
+11. Internship Recommendations
+12. Notifications
+
+---
+
+# Collection 1 — Users ⭐
+
+## Purpose
+
+Stores authentication and complete student profile.
+
+### Fields
+
+| Field | Description |
+|---------|-------------|
+| _id | User ID |
+| name | Full Name |
+| email | Login Email |
+| password | Encrypted Password |
+| profileImage | Profile Photo |
+| college | College Name |
+| degree | Degree |
+| branch | Branch |
+| year | Current Year |
+| skills | Array of Skills |
+| interests | Preferred Domains |
+| careerGoal | Internship / Placement / Startup |
+| experienceLevel | Beginner / Intermediate / Expert |
+| preferredLanguage | English / Hindi |
+| availability | Weekly Availability |
+| github | GitHub Profile |
+| linkedin | LinkedIn Profile |
+| profileCompleted | Profile Completion Status |
+| createdAt | Created Time |
+| updatedAt | Updated Time |
+
+### Used By
+
+- Authentication
+- AI Assessment
+- Learning Roadmap
+- AI Setu Pods
+- Internship Recommendation
+
+---
+
+# Collection 2 — Skill Assessments
+
+## Purpose
+
+Stores AI-generated skill assessment reports.
+
+### Fields
+
+| Field | Description |
+|---------|-------------|
+| _id | Assessment ID |
+| userId | User Reference |
+| technicalScore | Technical Score |
+| aptitudeScore | Aptitude Score |
+| communicationScore | Communication Score |
+| problemSolvingScore | DSA Score |
+| overallScore | Final Score |
+| skillLevel | Beginner / Intermediate / Expert |
+| strengths | Strong Skills |
+| weaknesses | Weak Skills |
+| aiFeedback | AI Suggestions |
+| createdAt | Assessment Date |
+
+### Used By
+
+- Skill Gap Analysis
+- Learning Roadmap
+- Setu Pods
+
+---
+
+# Collection 3 — Learning Roadmaps
+
+## Purpose
+
+Stores personalized AI learning plans.
+
+### Fields
+
+| Field | Description |
+|---------|-------------|
+| _id | Roadmap ID |
+| userId | User Reference |
+| careerGoal | Target Goal |
+| currentLevel | Current Skill Level |
+| targetRole | Backend / Frontend / AI etc. |
+| roadmapSteps | Weekly Learning Plan |
+| estimatedDuration | Duration |
+| status | Active / Completed |
+| createdAt | Generated Date |
+
+---
+
+# Collection 4 — Setu Pods ⭐
+
+## Purpose
+
+AI-generated collaborative learning groups.
+
+### Fields
+
+| Field | Description |
+|---------|-------------|
+| _id | Pod ID |
+| podName | Pod Name |
+| domain | Development Domain |
+| projectId | Linked Project |
+| mentorId | Mentor User |
+| status | Active / Completed |
+| createdAt | Created Time |
+
+---
+
+# Collection 5 — Pod Members
+
+## Purpose
+
+Maps students to AI-generated Setu Pods.
+
+### Fields
+
+| Field | Description |
+|---------|-------------|
+| _id | Member ID |
+| podId | Pod Reference |
+| userId | User Reference |
+| role | Beginner / Intermediate / Expert |
+| joinedAt | Joined Date |
+
+---
+
+# Collection 6 — Projects
+
+## Purpose
+
+Stores collaborative real-world projects.
+
+### Fields
+
+| Field | Description |
+|---------|-------------|
+| _id | Project ID |
+| title | Project Name |
+| description | Description |
+| domain | Web / AI / Mobile |
+| difficulty | Easy / Medium / Hard |
+| estimatedDuration | Timeline |
+| status | Upcoming / Active / Completed |
+| createdAt | Created Time |
+
+---
+
+# Collection 7 — Tasks
+
+## Purpose
+
+Stores AI-distributed project tasks.
+
+### Fields
+
+| Field | Description |
+|---------|-------------|
+| _id | Task ID |
+| projectId | Linked Project |
+| assignedTo | Assigned User |
+| title | Task Title |
+| description | Task Details |
+| difficulty | Easy / Medium / Hard |
+| deadline | Due Date |
+| status | Pending / In Progress / Completed |
+
+---
+
+# Collection 8 — Progress Reports
+
+## Purpose
+
+Tracks student growth throughout the platform.
+
+### Fields
+
+| Field | Description |
+|---------|-------------|
+| _id | Progress ID |
+| userId | User Reference |
+| completedProjects | Total Projects |
+| completedTasks | Total Tasks |
+| skillScore | Technical Growth |
+| communicationScore | Communication |
+| collaborationScore | Collaboration |
+| leadershipScore | Leadership |
+| resumeScore | ATS Score |
+| interviewScore | Interview Score |
+| updatedAt | Updated Time |
+
+---
+
+# Collection 9 — Resume Analysis
+
+## Purpose
+
+Stores AI-powered ATS resume analysis.
+
+### Fields
+
+| Field | Description |
+|---------|-------------|
+| _id | Analysis ID |
+| userId | User Reference |
+| resumeUrl | Uploaded Resume |
+| atsScore | ATS Score |
+| missingKeywords | Missing Skills |
+| strengths | Resume Strengths |
+| suggestions | AI Suggestions |
+| analyzedAt | Analysis Date |
+
+---
+
+# Collection 10 — Mock Interviews
+
+## Purpose
+
+Stores AI mock interview sessions.
+
+### Fields
+
+| Field | Description |
+|---------|-------------|
+| _id | Interview ID |
+| userId | User Reference |
+| role | Interview Role |
+| questions | Questions Asked |
+| feedback | AI Feedback |
+| technicalScore | Technical Score |
+| communicationScore | Communication Score |
+| confidenceScore | Confidence Score |
+| completedAt | Completion Time |
+
+---
+
+# Collection 11 — Internship Recommendations
+
+## Purpose
+
+Stores AI-generated internship recommendations.
+
+### Fields
+
+| Field | Description |
+|---------|-------------|
+| _id | Recommendation ID |
+| userId | User Reference |
+| recommendedRoles | Suggested Roles |
+| companies | Suggested Companies |
+| requiredSkills | Missing Skills |
+| generatedAt | Generated Time |
+
+---
+
+# Collection 12 — Notifications
+
+## Purpose
+
+Stores platform notifications.
+
+### Fields
+
+| Field | Description |
+|---------|-------------|
+| _id | Notification ID |
+| userId | User Reference |
+| title | Notification Title |
+| message | Notification Description |
+| type | Assessment / Pod / Project |
+| isRead | Read Status |
+| createdAt | Created Time |
+
+---
+
+# Database Relationships
+
+```text
+Users
+│
+├── Skill Assessments
+│
+├── Learning Roadmaps
+│
+├── Resume Analysis
+│
+├── Mock Interviews
+│
+├── Internship Recommendations
+│
+├── Progress Reports
+│
+└── Pod Members
+        │
+        ▼
+    Setu Pods
+        │
+        ▼
+     Projects
+        │
+        ▼
+       Tasks
+```
+
+---
+
+# MVP Development Order
+
+## Sprint 1
+
+- ✅ Authentication
+- ✅ User Profile
+- 🔄 Profile Setup
+
+---
+
+## Sprint 2
+
+- AI Skill Assessment
+- Skill Gap Analysis
+- Learning Roadmap
+
+---
+
+## Sprint 3
+
+- AI Setu Pods
+- Projects
+- Tasks
+
+---
+
+## Sprint 4
+
+- Resume Analysis
+- AI Mock Interview
+- Internship Recommendations
+
+---
+
+## Sprint 5
+
+- Progress Dashboard
+- Notifications
+- Deployment
+
+---
+
+# Why This Database Design?
+
+DreamSetu is more than a learning platform.
+
+It creates a complete **AI Career Journey**:
+
+```text
+Register
+      ↓
+Profile Setup
+      ↓
+AI Skill Assessment
+      ↓
+Skill Gap Analysis
+      ↓
+Learning Roadmap
+      ↓
+AI Setu Pods
+      ↓
+Real-world Projects
+      ↓
+Resume Analysis
+      ↓
+AI Mock Interview
+      ↓
+Internship Recommendation
+      ↓
+Career Ready
+```
+
+This modular database design supports both the **Buildathon MVP** and future expansion into a production-ready AI-powered collaborative career platform.
