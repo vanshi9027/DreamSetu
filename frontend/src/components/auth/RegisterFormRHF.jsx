@@ -1,6 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-
+import { useState } from "react";
+import { registerUser } from "../../services/authService";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterFormRHF() {
     const {
@@ -10,8 +12,24 @@ export default function RegisterFormRHF() {
         formState: { errors },
     } = useForm();
     const password = watch("password");
-    const onSubmit = (data) => {
-        console.log(data);
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false)
+    const [apiError, setApiError] = useState("");
+    const onSubmit = async (data) => {
+        setApiError("");
+        try {
+            setLoading(true);
+            const response = await registerUser(data);
+
+
+            if (response.message) {
+                alert(response.message);
+                navigate("/login");
+            }
+        } catch (error) {
+            setLoading(false);
+            setApiError(error.response.data.message);
+        }
     };
 
     return (
@@ -73,12 +91,17 @@ export default function RegisterFormRHF() {
                     name="email"
                     id="email"
                     {...register("email", {
+
                         required: "Email is required",
                         pattern: {
                             value: /^\S+@\S+\.\S+$/,
                             message: "Enter a valid email",
+
                         },
                     })}
+
+
+
 
 
                 />
@@ -105,11 +128,13 @@ export default function RegisterFormRHF() {
                     id="password"
                     {...register("password", {
                         required: "Password is required",
+
                         minLength: {
                             value: 8,
                             message: "Password must be at least 8 characters",
                         },
                     })}
+
 
 
                 />
@@ -148,12 +173,17 @@ export default function RegisterFormRHF() {
                 )}
 
             </div>
+            {apiError && (
+                <p className="text-red-600 text-sm mt-2">
+                    {apiError}
+                </p>
+            )}
 
             {/* Button */}
             <button
                 className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
-            >
-                Create Account
+                disabled={loading}       >
+                {loading ? "Creating Account..." : "Create Account"}
             </button>
 
             {/* Footer */}
