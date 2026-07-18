@@ -292,8 +292,10 @@ _Add screenshots here_
 
 ## Authentication
 
-_<img width="1892" height="1061" alt="image" src="https://github.com/user-attachments/assets/c9b20b40-150d-4893-b538-773e058c7e56" />
-<img width="1887" height="1078" alt="image" src="https://github.com/user-attachments/assets/6ab87e30-6e0b-443a-8d4e-4cfdc250b359" />
+<img width="1902" height="972" alt="image" src="https://github.com/user-attachments/assets/0cbc9a50-7c1e-4af4-85d6-c7033765f12c" />
+
+<img width="1907" height="943" alt="image" src="https://github.com/user-attachments/assets/e2ac2018-f6e7-486d-a58b-7f295353a9cf" />
+
 
 
 ---
