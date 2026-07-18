@@ -16,9 +16,9 @@ const jwt = require("jsonwebtoken");
  *@access Public
  */
  async function  registerUser(req, res){
-    const { username , password , email} = req.body;
+    const { fullName, password , email} = req.body;
     // 1. check missing fields
-    if(! username || !password || !email ){
+    if(!fullName || !password || !email ){
         return res.status(400).json({
             message: " please provide username email and password"
         });
@@ -41,7 +41,7 @@ const jwt = require("jsonwebtoken");
     const hash = await bcrypt.hash(password, 10)
     //  3. create new user
     const user = await userModel.create({
-        username ,
+        fullName ,
         password : hash,
         email,
         // profile_image,
@@ -61,7 +61,7 @@ const jwt = require("jsonwebtoken");
         message : "User registered successfully",
         user : {
             id : user._id,
-            username : user.username,
+            fullName : user.fullName,
             email: user.email,
 
         }
@@ -105,7 +105,7 @@ const jwt = require("jsonwebtoken");
         message : " User loggedIn successfully",
         user : {
             id : user._id,
-            username : user.username,
+            fullName: user.fullName,
             email : user.email,
         
 
@@ -146,7 +146,7 @@ const jwt = require("jsonwebtoken");
         message:"User details fetched successfully",
         user : {
             id : user._id,
-            username : user.username,
+            fullName: user.fullName,
             email : user.email
         }
 
