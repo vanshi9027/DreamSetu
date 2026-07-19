@@ -292,7 +292,11 @@ _Add screenshots here_
 
 ## Authentication
 
-_Coming Soon_
+<img width="1902" height="972" alt="image" src="https://github.com/user-attachments/assets/0cbc9a50-7c1e-4af4-85d6-c7033765f12c" />
+
+<img width="1907" height="943" alt="image" src="https://github.com/user-attachments/assets/e2ac2018-f6e7-486d-a58b-7f295353a9cf" />
+
+
 
 ---
 
