@@ -1,11 +1,11 @@
 import AuthLayout from "../../components/auth/AuthLayout";
 // import LoginForm from "../../components/auth/LoginForm";
-import LoginFormRHF from "../../components/auth/LoginFormRHF";
+import LoginFormRHFB from "../../components/auth/LoginFormRHFB";
 
 function LoginPage() {
   return (
     <AuthLayout>
-      <LoginFormRHF />
+      <LoginFormRHFB/>
     </AuthLayout>
   );
 }

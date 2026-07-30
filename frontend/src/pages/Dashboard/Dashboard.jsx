@@ -2,6 +2,7 @@ import Navbar from "../../components/dashboard/Navbar";
 import QuickActions from "../../components/Sections/QuickActions";
 import Sidebar from "../../components/dashboard/Sidebar";
 import WelcomeSection from "../../components/dashboard/WelcomeSection"
+import ProgressOverview from "../../components/Sections/ProgressOverview";
 
 export default function Dashboard() {
     return (
@@ -14,6 +15,7 @@ export default function Dashboard() {
                     <div className="max-w-7xl mx-auto">
                         <WelcomeSection />
                         <QuickActions />
+                        <ProgressOverview/>
                     </div>
 
                 </main>
