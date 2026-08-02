@@ -39,8 +39,8 @@ The platform consists of five major components:
 ## Frontend
 
 - React
-- TypeScript
-- Tailwind CSS
+- JavaScript
+- Bootstrap
 - React Router
 - Axios
 
@@ -71,7 +71,7 @@ Responsibilities:
 
 ## Database
 
-Supabase (PostgreSQL)
+MongoDb
 
 Stores:
 
