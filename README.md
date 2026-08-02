@@ -183,8 +183,8 @@ Students earn points for meaningful contributions.
 ## Frontend
 
 - React
-- TypeScript
-- Tailwind CSS
+- JavaScript
+- Bootstrap
 - React Router
 - Vite
 
