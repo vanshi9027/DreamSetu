@@ -82,9 +82,13 @@ async function registerUser(req, res) {
  */
 
 async function loginUser(req, res) {
+    try{
     const { email, password } = req.body;
-
-    const user = await userModel.findOne({ email });
+    console.log("Email:", email);
+    console.log("Entered Password:", password);
+     const user = await userModel.findOne({ email })
+    .select("+password");
+    console.log("User:", user);
     // check user exits 
     if (!user) {
         return res.status(400).json({
@@ -93,7 +97,7 @@ async function loginUser(req, res) {
     }
 
     // password validate
-
+    console.log("Stored Password:", user.password);
     const passwordvalid = await bcrypt.compare(password, user.password);
 
     if (!passwordvalid) {
@@ -127,6 +131,13 @@ async function loginUser(req, res) {
         }
 
     })
+}catch(err){
+ console.error(err);
+
+        res.status(500).json({
+            message: "Internal Server Error"
+        });
+}
 }
 /** 
  * @name logoutUser
@@ -168,6 +179,9 @@ async function getMe(req, res) {
     })
 
 }
+
+
+
 module.exports = {
     registerUser,
     loginUser,

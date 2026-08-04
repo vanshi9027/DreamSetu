@@ -6,6 +6,7 @@ const {loginUser} = require("../controllers/userController");
 const {logoutUser} = require("../controllers/userController");
 const authUser = require("../middleware/authMiddleware");
 const {getMe} = require("../controllers/userController");
+const {updateProfile}= require("../controllers/profileController");
 
 
 
@@ -31,4 +32,6 @@ router.post("/login", loginUser);
 router.get("/logout" , logoutUser);
 
 router.get("/getme" ,  authUser , getMe);
+
+router.put("/profile" , authUser , updateProfile);
 module.exports = router;

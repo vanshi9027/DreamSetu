@@ -1,99 +1,74 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const userSchema = new Schema({
-    fullName : {
+const userSchema = new Schema(
+
+{
+    fullName: {
         type: String,
-        required : true,
-        unqiue :[true, " username  already taken"],
-
+        required: true,
+        trim: true
     },
-    password :{
+
+    email: {
         type: String,
-        required : true,
-        
-
+        required: true,
+        unique: true,
+        lowercase: true
     },
 
-    email : {
-        type: String, 
-        required : true,
-         unqiue :[true, "Account already exists with this email address"],
-
-
-    },
-
-    college : {
+    password: {
         type: String,
-        default: "",
+        required: true,
+        select: false
+    },
 
-    },
-    degree :{
+    profileImage: {
         type: String,
+        default: ""
+    },
 
-    },
-    branch : {
+    college: {
         type: String,
+        default: ""
     },
+
+    branch: {
+        type: String,
+        default: ""
+    },
+
     year: {
-        type: Number,
+        type: Number
     },
-    skills: {
-        type : [String],
-        default : [],
 
-    },
-    interests : {
-        type: [String],
-        default : [],
-    },
-    careerGoal : {
+    bio: {
         type: String,
-
+        default: ""
     },
-    experienceLevel : {
+
+    preferredDomain: {
         type: String,
-        default : "Beginner"
-
+        default: ""
     },
-    availability :{
-        type: [String],
-        default : [],
 
-    },
-    preferredLanguage : {
+    preferredLanguage: {
         type: String,
-        default : "English"
-
+        default: ""
     },
-    github : {
+
+    weeklyAvailability: {
+        type: Number
+    },
+
+    skillLevel: {
         type: String,
+        enum: ["Beginner", "Intermediate", "Advanced"],
+        default: "Beginner"
+    }
+},
+{ timestamps: true }
+);
 
-    },
-    linkedin : {
-        type: String,
-         default: "",
-
-    },
-    profileCompleted :{
-        type: Boolean,
-        default : false,
-    },
-    
-    // timestamps: true;
-    
-
-
-
-
-    // profile_image:{
-    //     type: String,
-    //     default : "",
-
-    // }
-
-
-
-});
 
 module.exports = mongoose.model("User" , userSchema);
 
