@@ -21,8 +21,12 @@ app.use(cookieParser());
 
 const userRouter = require("../routes/userRouter.js")
 
+const assessmentRouter = require("../routes/assessmentRouter.js")
+
 // using all routes here/
 app.use('/auth', userRouter);
+
+app.use('/assessment' , assessmentRouter);
 
 module.exports = app
 

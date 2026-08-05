@@ -64,7 +64,11 @@ const userSchema = new Schema(
         type: String,
         enum: ["Beginner", "Intermediate", "Advanced"],
         default: "Beginner"
-    }
+    },
+    bestAssessmentScore: {
+    type: Number,
+    default: 0
+}
 },
 { timestamps: true }
 );
