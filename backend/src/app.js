@@ -22,11 +22,14 @@ app.use(cookieParser());
 const userRouter = require("../routes/userRouter.js")
 
 const assessmentRouter = require("../routes/assessmentRouter.js")
+const setPodRouter = require("../routes/SetuPodRouter.js");
 
 // using all routes here/
 app.use('/auth', userRouter);
 
 app.use('/assessment' , assessmentRouter);
+
+app.use("/pod" , setPodRouter);
 
 module.exports = app
 
