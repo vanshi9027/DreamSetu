@@ -56,14 +56,42 @@ const userSchema = new Schema(
         default: ""
     },
 
-    weeklyAvailability: {
-        type: Number
+weeklyAvailability: [
+  {
+    day: {
+      type: String,
+      enum: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      required: true
     },
+
+    startTime: {
+      type: String,
+      required: true
+    },
+
+    endTime: {
+      type: String,
+      required: true
+    }
+  }
+],
 
     skillLevel: {
         type: String,
         enum: ["Beginner", "Intermediate", "Advanced"],
         default: "Beginner"
+    },
+    profileCompleted : {
+        type : Boolean,
+        default : false
     },
     bestAssessmentScore: {
     type: Number,

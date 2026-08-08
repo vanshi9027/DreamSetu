@@ -1,6 +1,8 @@
-const podSchema = require("../models/podSchema");
+const podModel = require("../models/podSchema");
 
-const memberSchema = require("../models/Members");
+const memberModel= require("../models/Members");
+
+const userModel = require("../models/User");
 
 
 const findPod = async (req, res) =>{
@@ -9,7 +11,7 @@ const userId = req.user.id;
 
 
 // Fetch the logged-in user's profile
-const user = await UserModel.findById(userId);
+const user = await userModel.findById(userId);
 
 
 // Check whether the user exists
@@ -37,12 +39,13 @@ if (!user.skillLevel) {
 }
 
 // Check if the user is already part of an active pod
-const existingPod = await PodModel.findOne({
+const existingPod = await podModel.findOne({
     "members.user": userId,
     status: {
         $in: ["Waiting", "Active"]
     }
 });
+console.log("No existing pod found");
 
 if (existingPod) {
     return res.status(400).json({
@@ -50,12 +53,86 @@ if (existingPod) {
         message: "You are already a member of an active Setu Pod."
     });
 }
+console.log("No existing pod found");
+
+return res.status(200).json({
+    success: true,
+    message: "No existing pod found. Ready to find a pod."
+});
  }catch(err){
-  res.status(400).json({
-    success : false,
-    message : err.message,
-  });
+    console.log(err);
+//   res.status(400).json({
+//     success : false,
+//     message : err.message,
+//   });
  }
 
 
+}
+
+
+
+const getMyPod = async (req, res) =>{
+try{
+    const userId = req.user.id;
+
+
+     const user = await userModel.findById(userId);
+
+    if(!user){
+      return   res.status(404).json({
+           success: false,
+            message :" User not Found",
+        });
+
+    }
+
+    
+   const pod = await podModel.findOne({
+       "members.user" : userId,
+       status : {$in : ["Waiting" , "Active"]
+
+       }
+   
+
+});
+
+  if(!pod){
+   return  res.status(404).json({
+       success: false,
+        message: "Not a member of any active pod"
+    });
+  }
+
+res.status(200).json({   success: true,
+    message : "welcome to your pod",
+    pod :{
+        PodName : pod.podName,
+        domain : pod.domain,
+        members : pod.members,
+        status : pod.status,
+        maxMembers : pod.maxMembers,
+    }
+
+
+
+
+
+
+})
+}catch(err){
+    console.log(err);
+//    res.status(500).json({
+//     success : false,
+//     message : err.message,
+//    });
+}
+
+
+
+}
+
+module.exports = {
+    findPod,
+    getMyPod,
 }

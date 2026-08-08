@@ -9,7 +9,7 @@ const MemberSchema = new Schema(
       required : true,
 
   },
-  role : {
+  SkillLevel : {
     type: String,
     enum : ["Beginner" , "Intermediate" , "Expert"],
     required : true,

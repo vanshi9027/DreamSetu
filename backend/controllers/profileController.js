@@ -26,7 +26,8 @@ const updateProfile = async (req, res) =>{
         preferredDomain,
         preferredLanguage,
         weeklyAvailability,
-        skillLevel
+        skillLevel,
+        profileCompleted
     } = req.body;
 
     if (fullName) user.fullName = fullName;
@@ -39,7 +40,7 @@ const updateProfile = async (req, res) =>{
     if (preferredLanguage) user.preferredLanguage = preferredLanguage;
     if (weeklyAvailability) user.weeklyAvailability = weeklyAvailability;
     if (skillLevel) user.skillLevel = skillLevel;
-
+     user.profileCompleted = true;
     await user.save();
     
 

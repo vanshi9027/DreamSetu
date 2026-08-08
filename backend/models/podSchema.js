@@ -1,4 +1,5 @@
-const mongoose = require(" mongoose");
+const mongoose = require("mongoose");
+const MemberSchema = require("../models/Members");
 
 const Schema = mongoose.Schema;
 
@@ -9,12 +10,13 @@ const PodSchema = new Schema({
     trim : true,
   },
 
-
+ 
   domain: {
     type: String,
     enum: ["Frontend", "Backend", "Java", "Python", "AI", "DSA"],
     required: true,
 },
+members: [MemberSchema],
 status: {
     type: String,
     enum: ["Waiting", "Active", "Completed", "Expired"],
@@ -35,3 +37,5 @@ createdBy: {
     timestamps: true
 }
 )
+
+module.exports = mongoose.model("pod" , PodSchema);
